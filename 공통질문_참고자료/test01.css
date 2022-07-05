@@ -1,0 +1,121 @@
+@charset 'utf-8';
+
+.wrap {
+    border: 1px solid red;
+    max-width: 768px;
+    margin: auto;
+    overflow: hidden;
+}
+
+header,
+nav {
+    border: 1px solid red;
+    position: fixed;
+    max-width: 768px;
+    width: 100%;
+    height: 100px;
+    z-index: 1000;
+    background-color: aliceblue;
+}
+
+header {
+    top: 0;
+}
+
+nav {
+    bottom: 0;
+}
+
+section {
+    height: 50vh;
+    border: 5px solid lightcyan;
+}
+
+.sec1 {
+    /* 헤더부분이 끝나는 시점에서 시작됨 */
+    /* 가려짐 방지 */
+    margin-top: 100px;
+    height: 100vh;
+}
+
+.sec1 .pro {
+    background-color: lightsalmon;
+    position: relative;
+}
+
+.pro > div {
+    opacity: 0.2;
+    /* img가 절반만 보이고 절반은 밖으로 출력 */
+    width: 200%;
+    display: flex;
+    flex-wrap: wrap;
+    /* center로 높이값을 잃어버림 */
+    align-items: center;
+    border: 1px solid tomato;
+    /* 애니메이션 작업 코드 */
+    /* animation-name: ani1; */
+    /* 애니메이션 작업 시간 */
+    animation-duration: 30s;
+    /* 반복 횟수(infinite : 무한반복) */
+    animation-iteration-count: infinite;
+    /* 일정한 속도로 움직임 */
+    animation-timing-function: linear;
+}
+/* 홀수 번 째 */
+.pro div:nth-of-type(odd) {
+    animation-name: ani1;
+}
+/* 짝수 번 째 */
+.pro div:nth-of-type(even) {
+    animation-name: ani2;
+    margin-left: -100%;
+}
+
+/* 애니메이션 작업 */
+@keyframes ani1 {
+    /* 이미지들이 왼쪽으로 이동함 */
+    0% {margin-left: 0;}
+    100% {margin-left: -100%}
+}
+
+/* 애니메이션 작업 */
+@keyframes ani2 {
+    /* 이미지들이 왼쪽으로 이동함 */
+    0% {margin-left: -100%;}
+    100% {margin-left: 0%}
+}
+
+.pro > div > p {
+    /* 부모는 항상 100%로 계산해야한다 */
+    width: calc(10% - 20px);
+    /* border: 1px solid blue; */
+    /* 동그란 원 안에 이미지를 넣음(넘어가면 안보이게) */
+    border-radius: 50%;
+    overflow: hidden;
+
+    background-color: white;
+
+    /* padding을 넣으면 이미지가 줄어듬(여백X) */
+    /* 여백을 주기위해 margin 사용 */
+    margin: 10px;
+}
+
+
+.pro img {
+    width: 100%;
+}
+
+.pro .btn_pro {
+    position: absolute;
+    width: 25%;
+    height: 40px;
+    border-radius: 20px;
+    line-height: 40px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
